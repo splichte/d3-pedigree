@@ -1,5 +1,7 @@
 # d3-pedigree
 
+![image](demo.png)
+
 Usage: open `index.html`
 
 An interactive, complex pedigree viewer using d3. Click on marriage nodes, samples and links to "highlight" certain relationships -- this is advantageous in complicated pedigrees where the family lines are nearly guaranteed to overlap. 
