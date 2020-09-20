@@ -1,0 +1,87 @@
+<!DOCTYPE html> 
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://dagrejs.github.io/project/dagre-d3/latest/dagre-d3.min.js"></script>
+
+    <style>
+body {
+    font: 300 20px 'Helvetica Neue', Helvetica;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.node rect {
+  stroke: #333;
+  fill: #fff;
+  stroke-width: 4px;
+}
+
+.node rect:hover {
+    cursor: pointer;
+}
+
+.node circle:hover {
+    cursor: pointer;
+}
+
+.node circle {
+  stroke: #333;
+  fill: #fff;
+  stroke-width: 4px;
+}
+
+.node polygon:hover {
+    cursor: pointer;
+}
+.edgePath path {
+  stroke: #333;
+  fill: #333;
+  stroke-width: 3px;
+  marker-end: none;
+}
+
+a#help {
+    text-decoration:none;
+    color: blue;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+a#help:hover {
+    color: gray;
+}
+
+</style>
+</head>
+<body>
+    <!-- file upload here! -->
+    <h2>draw my ped</h2>
+    <span style="font-size: 14px; margin-right: 8px;">upload a PED file: </span><input id="ped-file" type="file" />
+    <div id="error" style="display: inline-block; color: red; font-size: 14px;"></div>
+    <br>
+    <a id="help">(show help)</a>
+    <div id="help-div" style="margin-top: 20px; font-size: 14px; line-height:25px; display: none;">
+        <span style="font-weight: normal; font-size: 14px;">Help</span><br><br>
+        <svg width="25" height="25"><rect width="20" height="20" x="2" y="2" style="stroke: rgb(51,51,51); stroke-width: 0.75px; fill: #ccc"></rect></svg>
+        <svg width="25" height="25"><circle cx="12" cy="12" r="10" style="stroke: #333; stroke-width: 0.75px; fill: #ccc"></circle></svg> 
+        - Affected samples. Male is square, female is circle.
+        <br>
+        <svg width="25" height="25"><rect width="20" height="20" x="2" y="2" style="stroke: rgb(51,51,51); stroke-width: 0.75px; fill: white"></rect></svg>
+        <svg width="25" height="25"><circle cx="12" cy="12" r="10" style="stroke: #333; stroke-width: 0.75px; fill: white"></circle></svg> 
+        - Unaffected samples. Male is square, female is circle.
+        <br>
+        <svg width="25" height="25"><polygon points="0,12 12,0 25,12 12,25" style="stroke: rgb(51,51,51); fill: rgb(51,51,51);"></polygon></svg> - Marriage node. Parents and children are connected to this node. Having a marriage node helps graph drawing for complex pedigrees and for multiple + missing partners.
+        <br><br>
+        <strong>Hover</strong> over any node (marriage or sample) on the graph to show its adjacent edges and family members. This is useful in complicated pedigrees where the lines may overlap.<br>
+        <strong>Click</strong> on a node to make the highlighting persist. Click again to make it stop. <br>
+        <strong>Scroll</strong> on the drawing to zoom the SVG in and out.<br>
+
+    </div>
+    <br>
+    <script src="index.js"></script>
+
+</body>
